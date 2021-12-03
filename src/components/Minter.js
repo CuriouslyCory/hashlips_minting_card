@@ -105,6 +105,30 @@ function Minter() {
     }
   };
 
+  const getMaxWalletCap = async () => {
+    const params = {
+      to: info.contractJSON.address,
+      from: info.account,
+      data: info.contract.methods.nftPerAddressLimit().encodeABI(),
+    };
+    try {
+      const result = await window.ethereum.request({
+        method: "eth_call",
+        params: [params],
+      });
+      console.log(info.web3.utils.hexToNumberString(result));
+      setMintInfo((prevState) => ({
+        ...prevState,
+        maxWalletCap: info.web3.utils.hexToNumberString(result),
+      }));
+    } catch (err) {
+      setMintInfo((prevState) => ({
+        ...prevState,
+        maxWalletCap: 0,
+      }));
+    }
+  };
+
   const getCost = async () => {
     const params = {
       to: info.contractJSON.address,
@@ -188,11 +212,14 @@ function Minter() {
     if (info.connected) {
       getSupply();
       getCost();
+      getMaxWalletCap();
     }
   }, [info.connected]);
 
   return (
     <div className="page">
+      <div className="header">
+      </div>
       <div className="card">
         <div className="card_header colorGradient">
           <img className="card_header_image ns" alt={"banner"} src={Hero} />
@@ -245,6 +272,10 @@ function Minter() {
                 <p style={{ color: "var(--statusText)", textAlign: "center" }}>
                   {mintInfo.supply}/{contract.total_supply}
                 </p>
+                <div style={{ width: 20 }}></div>
+                <p>
+                  Max Frogs per Wallet: {mintInfo.maxWalletCap}
+                </p>
               </div>
             ) : null}
             {mintInfo.status ? (
@@ -255,6 +286,7 @@ function Minter() {
                 {info.status}
               </p>
             ) : null}
+            
           </div>
         ) : (
           <div className="card_body">
@@ -299,6 +331,14 @@ function Minter() {
         >
           View Contract
         </a>
+      </div>
+      <div className="after-card">
+        <div>
+          
+        </div>
+      </div>
+      <div className="footer">
+
       </div>
     </div>
   );
