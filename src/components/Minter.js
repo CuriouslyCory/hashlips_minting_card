@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Web3 from "web3";
 import contract from "../contracts/contract.json";
-import Hero from "../assets/hero.png";
+import Hero from "../assets/hero.gif";
 
 const initialInfoState = {
   connected: false,
@@ -137,7 +137,7 @@ function Minter() {
         info.web3.utils.toHex(Number(mintInfo.cost) * mintInfo.amount)
       ),
       data: info.contract.methods
-        .mint(info.account, mintInfo.amount)
+        .mint(mintInfo.amount)
         .encodeABI(),
     };
     try {
@@ -295,7 +295,7 @@ function Minter() {
           }}
           className="_90"
           target="_blank"
-          href="https://polygonscan.com/token/0x827acb09a2dc20e39c9aad7f7190d9bc53534192"
+          href="https://polygonscan.com/token/0x62235D30650B794270B1195388d8E143DD061606"
         >
           View Contract
         </a>

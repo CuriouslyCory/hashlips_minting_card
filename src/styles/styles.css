@@ -8,9 +8,9 @@
   --accountText: #ffffff;
   --statusText: #470068;
   --bg-gradient_1: rgb(162, 196, 240);
-  --bg-gradient_2: rgb(240, 162, 217);
+  --bg-gradient_2: rgb(204, 240, 162);
   --gradient_1: rgb(83, 152, 243);
-  --gradient_2: rgb(236, 71, 214);
+  --gradient_2: rgb(56, 52, 0);
   --gradient_3: rgb(241, 204, 80);
   --success: #24a13f;
   --warning: #ca5824;
@@ -58,7 +58,7 @@ body {
   flex-direction: column;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   border-radius: 15px;
-  width: 300px;
+  width: 500px;
   transition: 0.3s;
   margin: 50px;
   position: relative;
@@ -69,8 +69,8 @@ body {
 }
 
 .card_header {
-  height: 250px;
-  width: 300px;
+  height: 550px;
+  width: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -82,7 +82,7 @@ body {
 
 .card_header_image {
   position: absolute;
-  width: 120%;
+  width: 100%;
 }
 
 .card_body {
