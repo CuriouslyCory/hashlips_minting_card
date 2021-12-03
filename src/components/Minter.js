@@ -333,7 +333,7 @@ function Minter() {
           className="_90"
           target="_blank"
           rel="noreferrer"
-          href="https://polygonscan.com/token/0x62235D30650B794270B1195388d8E143DD061606"
+          href={"https://polygonscan.com/token/" + contract.address}
         >
           View Contract
         </a>
