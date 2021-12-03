@@ -36,7 +36,7 @@ function Minter() {
         const networkId = await window.ethereum.request({
           method: "net_version",
         });
-        if (networkId == _contractJSON.chain_id) {
+        if (networkId === _contractJSON.chain_id) {
           let web3 = new Web3(window.ethereum);
           setInfo((prevState) => ({
             ...prevState,
@@ -273,6 +273,10 @@ function Minter() {
                   {mintInfo.supply}/{contract.total_supply}
                 </p>
                 <div style={{ width: 20 }}></div>
+                <p style={{ color: "var(--statusText)", textAlign: "center" }}>
+                  |
+                </p>
+                <div style={{ width: 20 }}></div>
                 <p>
                   Max Frogs per Wallet: {mintInfo.maxWalletCap}
                 </p>
@@ -327,6 +331,7 @@ function Minter() {
           }}
           className="_90"
           target="_blank"
+          rel="noreferrer"
           href="https://polygonscan.com/token/0x62235D30650B794270B1195388d8E143DD061606"
         >
           View Contract
