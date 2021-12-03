@@ -36,6 +36,7 @@ function Minter() {
         const networkId = await window.ethereum.request({
           method: "net_version",
         });
+        console.log(networkId);
         if (networkId == _contractJSON.chain_id) {
           let web3 = new Web3(window.ethereum);
           setInfo((prevState) => ({
